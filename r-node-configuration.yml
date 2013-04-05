@@ -1,0 +1,8 @@
+---
+# This playbook installs all the pre-reqs for R on each AppScale Node
+
+- hosts: appscale-nodes
+  user: root
+  tasks:
+    - include: ./common/tasks/main.yml
+    - include: ./r/tasks/main.yml

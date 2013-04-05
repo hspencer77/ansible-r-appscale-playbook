@@ -1,0 +1,7 @@
+#! /usr/bin/env Rscript
+update.packages(checkBuilt=TRUE, ask=FALSE, repos='http://cran.r-project.org')
+install.packages(c("rJava", "Rcpp", "RJSONIO", "digest", "functional", "stringr", "plyr", "reshape2"), repos='http://cran.r-project.org')
+.Last <- function() {
+       cat("RMR Bootstrapping Completed.\n")
+}
+quit(save = "no", status = 0, runLast = TRUE)

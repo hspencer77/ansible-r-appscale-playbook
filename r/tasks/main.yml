@@ -1,0 +1,36 @@
+---
+# This playbook installs R, libraries, and RHadoop packages on each AppScale node
+
+ - name: Ensure r-base, r-base-dev, r-base-core, r-cran-rjava, r-cran-codetools, r-cran-cluster
+   action: apt pkg=${item} force=yes
+   with_items: 
+       - r-base
+       - r-base-dev
+       - r-base-core
+       - r-cran-rjava
+       - r-cran-codetools
+       - r-cran-cluster
+
+ - name: Copy boostrap-rmr R script to the nodes
+   action: copy src=./r/files/bootstrap-rmr dest=/root/bootstrap-rmr mode=0655
+
+ - name: Run bootstrap-rmr script on each node
+   action: shell /root/bootstrap-rmr
+
+ - name: Download rhdfs library from RHadoop
+   action: shell /usr/bin/wget -O /root/rhdfs_1.0.5.tar.gz https://github.com/downloads/RevolutionAnalytics/RHadoop/rhdfs_1.0.5.tar.gz 
+
+ - name: Install rhdfs
+   action: shell export HADOOP_CMD=/root/appscale/AppDB/hadoop-0.20.2-cdh3u3/bin/hadoop; export HADOOP_STREAMING=/root/appscale/AppDB/hadoop-0.20.2-cdh3u3/contrib/streaming/hadoop-streaming-0.20.2-cdh3u3.jar; export HADOOP_CONF=/root/appscale/AppDB/hadoop-0.20.2-cdh3u3/conf; export JAVA_HOME=/usr/lib/jvm/java-6-openjdk/jre; export PATH=$PATH:$JAVA_HOME/bin; /usr/bin/R CMD INSTALL /root/rhdfs_1.0.5.tar.gz
+
+ - name: Download quickcheck from RHadoop
+   action: shell /usr/bin/wget -O /root/quickcheck_1.0.tar.gz https://github.com/downloads/RevolutionAnalytics/RHadoop/quickcheck_1.0.tar.gz
+
+ - name: Install quickcheck
+   action: shell export HADOOP_CMD=/root/appscale/AppDB/hadoop-0.20.2-cdh3u3/bin/hadoop; export HADOOP_STREAMING=/root/appscale/AppDB/hadoop-0.20.2-cdh3u3/contrib/streaming/hadoop-streaming-0.20.2-cdh3u3.jar; export HADOOP_CONF=/root/appscale/AppDB/hadoop-0.20.2-cdh3u3/conf; export JAVA_HOME=/usr/lib/jvm/java-6-openjdk/jre; export PATH=$PATH:$JAVA_HOME/bin; /usr/bin/R CMD INSTALL /root/quickcheck_1.0.tar.gz
+
+ - name: Download rmr2 from RHadoop
+   action: shell /usr/bin/wget -O /root/rmr2_2.0.2.tar.gz https://github.com/downloads/RevolutionAnalytics/RHadoop/rmr2_2.0.2.tar.gz
+ 
+ - name: Install rmr2 
+   action: shell export HADOOP_CMD=/root/appscale/AppDB/hadoop-0.20.2-cdh3u3/bin/hadoop; export HADOOP_STREAMING=/root/appscale/AppDB/hadoop-0.20.2-cdh3u3/contrib/streaming/hadoop-streaming-0.20.2-cdh3u3.jar; export HADOOP_CONF=/root/appscale/AppDB/hadoop-0.20.2-cdh3u3/conf; export JAVA_HOME=/usr/lib/jvm/java-6-openjdk/jre; export PATH=$PATH:$JAVA_HOME/bin; /usr/bin/R CMD INSTALL /root/rmr2_2.0.2.tar.gz

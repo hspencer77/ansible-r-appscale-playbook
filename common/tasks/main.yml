@@ -1,0 +1,27 @@
+---
+# This playbook contains the common plays for each node
+
+ - name: Update Repositories
+   action: command apt-get -y --force-yes dist-upgrade
+
+ - name: Copy R-Cran Repo Signing Key to nodes
+   action: copy src=./common/files/r-cran-repo.pub dest=/root/r-cran-repo.pub
+
+ - name: Add R-Cran Repo Signing Key
+   action: command apt-key add /root/r-cran-repo.pub
+
+ - name: Add R-Cran Repo
+   action: apt_repository repo='deb http://cran.cnr.Berkeley.edu/bin/linux/ubuntu lucid/'
+
+ - name: Update Repositories Cache
+   action: command apt-get update
+
+ - name: Ensure NTP is installed
+   action: apt pkg=ntp force=yes
+
+ - name: Ensure NTP is up and running
+   action: service name=ntp state=started
+   ignore_errors: yes
+
+ - name: Add HADOOP_CMD, HADOOP_STREAMING, HADOOP_CONF, JAVA_HOME and update PATH variables to .bashrc
+   action: lineinfile dest=/root/.bashrc state=present insertafter=EOF regexp=^export line="export HADOOP_CMD=/root/appscale/AppDB/hadoop-0.20.2-cdh3u3/bin/hadoop\nexport HADOOP_STREAMING=/root/appscale/AppDB/hadoop-0.20.2-cdh3u3/contrib/streaming/hadoop-streaming-0.20.2-cdh3u3.jar\nexport HADOOP_CONF=/root/appscale/AppDB/hadoop-0.20.2-cdh3u3/conf\nexport JAVA_HOME=/usr/lib/jvm/java-6-openjdk/jre\nexport PATH=$PATH:$JAVA_HOME/bin"
