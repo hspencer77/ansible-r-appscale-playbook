@@ -5,4 +5,4 @@
   user: root
   tasks:
     - include: ./common/tasks/main.yml
-    - include: ./r/tasks/main.yml
+    - include: ./r-nodes/tasks/main.yml

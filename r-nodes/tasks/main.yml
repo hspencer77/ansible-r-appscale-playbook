@@ -12,7 +12,7 @@
        - r-cran-cluster
 
  - name: Copy boostrap-rmr R script to the nodes
-   action: copy src=./r/files/bootstrap-rmr dest=/root/bootstrap-rmr mode=0655
+   action: copy src=./r-nodes/files/bootstrap-rmr dest=/root/bootstrap-rmr mode=0655
 
  - name: Run bootstrap-rmr script on each node
    action: shell /root/bootstrap-rmr
