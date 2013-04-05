@@ -175,9 +175,11 @@ Deleted hdfs://10.77.33.247:9000/tmp/wordcount-test
 >quit("yes")
 ```
 
-Thats it!  Now you can use R to leverage MapReduce on AppScale running on AWS/Eucalyptus.  For additional information, please reference the following URL:
+Thats it!  Now you can use R to leverage MapReduce on AppScale running on AWS/Eucalyptus.  For additional information, please reference the following URLs:
 
 - https://github.com/RevolutionAnalytics/RHadoop/wiki
+- http://www.r-project.org/
+- http://cran.r-project.org/doc/manuals/r-release/R-intro.html
 
 
 
