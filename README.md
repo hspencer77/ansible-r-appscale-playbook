@@ -14,7 +14,7 @@ In order to use the playbook, the following is needed:
   * EC2_SECRET_KEY
   * EC2_URL
 
-_For more information, check out the documentation from <a href="http://www.eucalyptus.com/docs/3.2/ug/get_creds.html#get_cred">Eucalyptus</a> and <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/setting_up_ec2_command_linux.html#set_aws_credentials_linux">AWS</a> regarding user credentials.
+_For more information, check out the documentation from <a href="http://www.eucalyptus.com/docs/3.2/ug/get_creds.html#get_cred">Eucalyptus</a> and <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/setting_up_ec2_command_linux.html#set_aws_credentials_linux">AWS</a> regarding user credentials._
 
 ## Usage
 
