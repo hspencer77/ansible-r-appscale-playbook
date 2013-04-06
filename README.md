@@ -12,8 +12,7 @@ In order to use the playbook, the following is needed:
 * The AWS/Eucalyptus variables exported as global variables in your shell
   * EC2_ACCESS_KEY
   * EC2_SECRET_KEY
-  * EC2_PRIVATE_KEY
-  * EC2_CERT
+  * EC2_URL
 
 _For more information, check out the documentation from <a href="http://www.eucalyptus.com/docs/3.2/ug/get_creds.html#get_cred">Eucalyptus</a> and <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/setting_up_ec2_command_linux.html#set_aws_credentials_linux">AWS</a> regarding user credentials.
 
